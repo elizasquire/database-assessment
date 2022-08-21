@@ -20,3 +20,29 @@ $this_menu_query = "SELECT ID, Item FROM menu WHERE ID = '" . $id . "'";
 $this_menu_query = mysqli_query($dbcon, $this_menu_query);
 $this_menu_record = mysqli_fetch_assoc($all_menu_result);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> WEGC Cafe </title>
+</head>
+<body>	
+<?php
+echo "<h1>Welcome to WEGC Cafe "."</h1>";
+
+?>
+
+<main>
+	<header>
+		<h1>Options</h1>
+	</header>
+	<nav>
+		<ul>
+			<li> <a href="index_assessment.php">Home</a></li>
+			<li> <a href="menu.php">Our Menu</a></li>
+			<li> <a href="items.php">Items</a></li>
+			<li> <a href="weekly_special.php">Weekly Specials</a></li>
+		</ul>
+	</nav>
+</main>
+</body>
+</html>
