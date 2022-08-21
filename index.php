@@ -8,3 +8,16 @@ else {																   /* so my tables can be accessed */
 	echo "connected to database";
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> WEGC Cafe </title>
+</head>
+<body>	
+<?php
+echo "<h1>Welcome to WEGC Cafe "."</h1>";
+
+?>
+</main>
+</body>
+</html>
