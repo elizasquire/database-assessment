@@ -7,4 +7,16 @@ if(mysqli_connect_errno()){
 else {																   /* so my tables can be accessed */
 	echo "connected to database";
 }
-
+/* Drinks Query */
+/*SELECT menu_id, FROM menu*/
+if(isset($_GET['Item'])){
+	$id = $_GET['Item'];
+}else{
+	$id = 1;
+}
+$all_menu_query = "SELECT ID, Item FROM menu";
+$all_menu_result = mysqli_query($dbcon, $all_menu_query);
+$this_menu_query = "SELECT ID, Item FROM menu WHERE ID = '" . $id . "'";
+$this_menu_query = mysqli_query($dbcon, $this_menu_query);
+$this_menu_record = mysqli_fetch_assoc($all_menu_result);
+?>
