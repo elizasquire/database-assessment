@@ -18,6 +18,23 @@ else {																   /* so my tables can be accessed */
 echo "<h1>Welcome to WEGC Cafe "."</h1>";
 
 ?>
+<main>
+	<header>
+		<h1>Options</h1>
+	</header>
+	<nav>
+		<ul>
+			<li> <a href="index_assessment.php">Home</a></li>
+			<li> <a href="menu.php">Our Menu</a></li>
+			<li> <a href="items.php">Items</a></li>
+			<li> <a href="weekly_special.php">Weekly Specials</a></li>
+		</ul>
+	</nav>
+	<?php
+	echo "<p>Here at WEGC we are committed to providing our students with cheap and well made food that relieves the stress of packed lunches.
+	</p>";
+
+	?>
 </main>
 </body>
 </html>
