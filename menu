@@ -43,6 +43,20 @@ echo "<h1>Welcome to WEGC Cafe "."</h1>";
 			<li> <a href="weekly_special.php">Weekly Specials</a></li>
 		</ul>
 	</nav>
+<?php
+$menu_query = "SELECT ID, Item FROM menu";
+$result = $dbcon->query($menu_query);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "Item: " . $row["Item"]. " - ID: " . $row["ID"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+$dbcon->close();
+?>
 </main>
 </body>
 </html>
