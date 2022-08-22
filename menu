@@ -44,16 +44,15 @@ echo "<h1>Welcome to WEGC Cafe "."</h1>";
 		</ul>
 	</nav>
 <?php
-$menu_query = "SELECT ID, Item FROM menu";
+$menu_query = "SELECT ID, Item FROM menu
+ORDER BY ID ASC;";  /*Displays the data in a table*/
 $result = $dbcon->query($menu_query);
 
-if ($result->num_rows > 0) {
+if ($result->num_rows > 0) {}
   // output data of each row
   while($row = $result->fetch_assoc()) {
     echo "Item: " . $row["Item"]. " - ID: " . $row["ID"]. "<br>";
-  }
-} else {
-  echo "0 results";
+
 }
 $dbcon->close();
 ?>
