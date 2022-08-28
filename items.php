@@ -13,3 +13,23 @@ $all_items_query = "SELECT Item, Cost, Nutrition, Availability FROM Items";
 $all_items_result = mysqli_query($dbcon, $all_items_query);
 //then display the result here
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<body>
+<main>
+	<header>
+		<h1>Items</h1>
+	</header>
+	<nav>
+		<ul>
+			<li> <a href="index_assessment.php">Home</a></li>
+			<li> <a href="menu.php">Our Menu</a></li>
+			<li> <a href="items.php">Items</a></li>
+			<li> <a href="weekly_special.php">Weekly Specials</a></li>
+		</ul>
+	</nav>
+</main>
+</body>
+</html>
