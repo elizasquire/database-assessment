@@ -7,3 +7,9 @@ if(mysqli_connect_errno()){
 else {																   /* so my tables can be accessed */
 	echo "connected to database";
  ?>
+<?php
+//Queries for this page
+$all_items_query = "SELECT Item, Cost, Nutrition, Availability FROM Items";
+$all_items_result = mysqli_query($dbcon, $all_items_query);
+//then display the result here
+?>
