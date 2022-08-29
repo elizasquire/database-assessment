@@ -30,6 +30,48 @@ $all_ws_result = mysqli_query($dbcon, $all_ws_query);
 			<li> <a href="weekly_special.php">Weekly Specials</a></li>
 		</ul>
 	</nav>
+
+<?php
+
+$result = mysqli_query($dbcon, $all_ws_query);
+if (!$result) 
+{
+	$message = 'ERROR: ' . mysqli_connect_error();
+	return $message;
+}
+else
+{
+	$i = 0;
+	echo '<html><body><table><tr>';
+	while ($i < mysqli_num_fields($result))
+	{
+		$tr = mysqli_fetch_field($result);
+		echo '<td>' . $tr->name . '</td>';
+		$i = $i + 1;
+	}
+	echo '</tr>';
+	
+	while ( ($row = mysqli_fetch_row($result))) 
+	{
+		$count = count($row);
+		$y = 0;
+		echo '<tr>';
+		while ($y < $count)
+		{
+			$c_row = current($row);
+			echo '<td>' . $c_row . '</td>';
+			next($row);
+			$y = $y + 1;
+		}
+		echo '</tr>';
+		
+	}
+	mysqli_free_result($result);
+	
+	echo '</table></body></html>';
+
+}
+?>
 </main>
 </body>
 </html>
