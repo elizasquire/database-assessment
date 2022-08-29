@@ -7,3 +7,8 @@ if(mysqli_connect_errno()){
 else {																   /* so my tables can be accessed */
 	echo "connected to database";}
 ?>
+<?php
+$all_ws_query = "SELECT ID, item_on_special, new_cost, Week from weekly_special
+ORDER BY Week ASC;"; /*ws stands for weekly special*/
+$all_ws_result = mysqli_query($dbcon, $all_ws_query);
+?>
