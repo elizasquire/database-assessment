@@ -7,25 +7,39 @@ if(mysqli_connect_errno()){
 else {																   /* so my tables can be accessed */
 	echo "connected to database";
 }
-/* Drinks Query */
+?>
+<?php
+/* Menu Query */
 /*SELECT menu_id, FROM menu*/
 if(isset($_GET['Item'])){
-	$id = $_GET['Item'];
+	$item_id = $_GET['Item'];
+}else{
+	$item_id = 1;
+}
+if(isset($_GET['ID'])){
+	$id = $_GET['ID'];
 }else{
 	$id = 1;
 }
-$all_menu_query = "SELECT ID, Item FROM menu";
-$all_menu_result = mysqli_query($dbcon, $all_menu_query);
-$this_menu_query = "SELECT ID, Item FROM menu WHERE ID = '" . $id . "'";
-$this_menu_query = mysqli_query($dbcon, $this_menu_query);
-$this_menu_record = mysqli_fetch_assoc($all_menu_result);
 ?>
+<?php
+$all_menu_query = "SELECT ID, Item FROM menu
+ORDER BY ID ASC;";
+$all_menu_result = mysqli_query($dbcon, $all_menu_query);
+
+$rs = mysqli_query($dbcon, $all_menu_query)
+or die ('Problem with query' . mysqli_error());
+?>
+
+	`
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title> WEGC Cafe </title>
 </head>
-<body>	
+<body>
+
+
 <?php
 echo "<h1>Welcome to WEGC Cafe "."</h1>";
 
@@ -43,47 +57,31 @@ echo "<h1>Welcome to WEGC Cafe "."</h1>";
 			<li> <a href="weekly_special.php">Weekly Specials</a></li>
 		</ul>
 	</nav>
+
+
+
+
+
+<table border="1" summary="Menu">
+<tr>
+<th>Item</th>
+<th>ID</th>
+</tr>
+	
 <?php
+while ($row = mysqli_fetch_array($rs)) { ?>
+<tr>
 
-$result = mysqli_query($dbcon, $all_menu_query);
-if (!$result) 
-{
-	$message = 'ERROR: ' . mysqli_connect_error();
-	return $message;
-}
-else
-{
-	$i = 0;
-	echo '<html><body><table><tr>';
-	while ($i < mysqli_num_fields($result))
-	{
-		$tr = mysqli_fetch_field($result);
-		echo '<td>' . $tr->name . '</td>';
-		$i = $i + 1;
-	}
-	echo '</tr>';
-	
-	while ( ($row = mysqli_fetch_row($result))) 
-	{
-		$count = count($row);
-		$y = 0;
-		echo '<tr>';
-		while ($y < $count)
-		{
-			$c_row = current($row);
-			echo '<td>' . $c_row . '</td>';
-			next($row);
-			$y = $y + 1;
-		}
-		echo '</tr>';
+<td><a href="items.php?Item=<?php echo $row["Item"]?>">
+    <?php echo $row["Item"]?></a>
+<td><?php echo $row["ID"]?></td>
+
+</tr>
 		
-	}
-	mysqli_free_result($result);
-	
-	echo '</table></body></html>';
-
+<?php
 }
 ?>
+</table>
 </main>
 </body>
 </html>
