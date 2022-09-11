@@ -5,20 +5,40 @@ $dbcon = mysqli_connect("localhost", "elizasquire", "CQYu2NF", "elizasquire_1");
 if(mysqli_connect_errno()){
 	echo "Failed to connect to MySQL:".mysqli_connect_error(); die();} /*This is what connects the website to my database, so my tables can be accessed*/
 else {																   /* so my tables can be accessed */
-	echo "connected to database";
- ?>
+	echo "";
+}
+?>
+
+
+
+
 <?php
-//Queries for this page
-$all_items_query = "SELECT Item, Cost, Nutrition, Availability FROM Items";
-$all_items_result = mysqli_query($dbcon, $all_items_query);
-//then display the result here
+
+if(isset($_GET['Item'])){
+	$item = $_GET['Item'];
+}else{
+	$item = 1;
+}
+
+?>
+
+<?php
+$sql = "SELECT Item, Cost, Nutrition, Availability FROM Items
+WHERE Items.Item='$item'"; 
+$rs = mysqli_query($dbcon, $sql)
+or die ('Problem with query' . mysqli_error());
+$row = mysqli_fetch_array($rs);
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<?php
+	echo "<h1>Items Information "."</h1>";
+	?>
+</head>
 <body>
-<main>
 	<header>
 		<h1>Items</h1>
 	</header>
@@ -26,53 +46,48 @@ $all_items_result = mysqli_query($dbcon, $all_items_query);
 		<ul>
 			<li> <a href="index_assessment.php">Home</a></li>
 			<li> <a href="menu.php">Our Menu</a></li>
-			<li> <a href="items.php">Items</a></li>
 			<li> <a href="weekly_special.php">Weekly Specials</a></li>
 		</ul>
 	</nav>
-
 	
+
+
+
+
 <?php
 
-$result = mysqli_query($dbcon, $all_items_query);
-if (!$result) 
-{
-	$message = 'ERROR: ' . mysqli_connect_error();
-	return $message;
-}
-else
-{
-	$i = 0;
-	echo '<html><body><table><tr>';
-	while ($i < mysqli_num_fields($result))
-	{
-		$tr = mysqli_fetch_field($result);
-		echo '<td>' . $tr->name . '</td>';
-		$i = $i + 1;
-	}
-	echo '</tr>';
-	
-	while ( ($row = mysqli_fetch_row($result))) 
-	{
-		$count = count($row);
-		$y = 0;
-		echo '<tr>';
-		while ($y < $count)
-		{
-			$c_row = current($row);
-			echo '<td>' . $c_row . '</td>';
-			next($row);
-			$y = $y + 1;
-		}
-		echo '</tr>';
-		
-	}
-	mysqli_free_result($result);
-	
-	echo '</table></body></html>';
+$sql = "SELECT * FROM Items
+WHERE Items.Item='$item'"; 
 
-}
-?>	
-</main>
+
+$rs = mysqli_query($dbcon, $sql)
+or die ('Problem with query' . mysqli_error());
+
+?>
+
+<table border="1" summary="Staff Orders">
+<tr>
+<th>Item</th>
+<th>Cost</th>
+<th>Nutrition</th>
+<th>Availability</th>
+</tr>
+
+<?php
+while ($row = mysqli_fetch_array($rs)) { ?>
+
+<tr>
+
+<td><?php echo $row["Item"]?></td>
+<td><?php echo $row["Cost"]?></td>
+<td><?php echo $row["Nutrition"]?></td>
+<td><?php echo $row["Availability"]?></td>
+
+</tr>
+
+
+<?php   }
+mysqli_close($dbcon); ?>
+</table>
 </body>
 </html>
