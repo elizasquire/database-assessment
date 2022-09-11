@@ -43,11 +43,8 @@ $row = mysqli_fetch_array($rs);
 		<h1>Items</h1>
 	</header>
 	<nav>
-		<ul>
-			<li> <a href="index_assessment.php">Home</a></li>
-			<li> <a href="menu.php">Our Menu</a></li>
-			<li> <a href="weekly_special.php">Weekly Specials</a></li>
-		</ul>
+		<a class="active" href="index_assessment.php">Home</a>
+  		<a href="menu.php">Back To Menu</a>
 	</nav>
 	
 
