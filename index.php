@@ -25,7 +25,6 @@ echo "<h1>Welcome to WEGC Cafe "."</h1>";
 	<nav>
   <a class="active" href="index_assessment.php">Home</a>
   <a href="menu.php">Menu</a>
-  <a href="items.php">Items</a>
   <a href="weekly_special.php">Weekly Special</a>
 	</nav>
 	<?php
