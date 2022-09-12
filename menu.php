@@ -161,6 +161,16 @@ while ($row = mysqli_fetch_array($rs)) { ?>
 <?php
 }
 ?>
+ <form name='drinks_form' id='drinks_form' method='get' action='sort.php'>
+
+		<!--drink button-->
+		<input type='submit' name='drinks_button' value='Sort by cost'>
+	</form>
+<?php
+	echo "<p>Click the item to find out more information!</p>";
+	echo "<p>Click the ID to find out when this is on special!</p>";
+	?>
+
 </table>
 </main>
 </body>
