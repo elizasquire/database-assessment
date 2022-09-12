@@ -37,6 +37,10 @@ or die ('Problem with query' . mysqli_error());
 	<title> WEGC Cafe </title>
 </head>
 	<h1>Costs</h1>
+<nav>
+  <a class="active" href="index_assessment.php">Home</a>
+  <a href="menu.php">Menu</a>
+</nav>
 <body>
 <table border="1" summary="Menu">
 <tr>
