@@ -39,8 +39,8 @@ or die ('Problem with query' . mysqli_error());
 	<h1>Costs</h1>
 <nav>
   <a class="active" href="index_assessment.php">Home</a>
-  <a href="menu.php">Menu</a>
-</nav>
+  <a href="menu.php">Back To Main Menu</a>
+	</nav>
 <body>
 <table border="1" summary="Menu">
 <tr>
@@ -59,3 +59,6 @@ while ($row = mysqli_fetch_array($rs)){ ?>
 <?php
 	}
 ?>
+</table>
+</body>
+</html>
