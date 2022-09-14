@@ -37,6 +37,7 @@ if(isset($_GET['ID'])){
   			<a href="menu.php">Menu</a>
   			
 	</nav>
+
 <?php
 
 $sql = "SELECT * FROM weekly_special
@@ -72,8 +73,7 @@ while ($row = mysqli_fetch_array($rs)) { ?>
 <?php   }
  ?>
 </table>
-
-
+ 
 </main>
 </body>
 </html>
