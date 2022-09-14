@@ -22,14 +22,6 @@ if(isset($_GET['Item'])){
 
 ?>
 
-<?php
-$sql = "SELECT Item, Cost, Nutrition, Availability FROM Items
-WHERE Items.Item='$item'"; 
-$rs = mysqli_query($dbcon, $sql)
-or die ('Problem with query' . mysqli_error());
-$row = mysqli_fetch_array($rs);
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +36,7 @@ $row = mysqli_fetch_array($rs);
 	</header>
 	<nav>
 		<a class="active" href="index_assessment.php">Home</a>
-  		<a href="menu.php">Back To Menu</a>
+  		<a href="menu.php">Back to Menu</a>
 	</nav>
 	
 
