@@ -108,7 +108,6 @@ while ($row = mysqli_fetch_array($rs)){ ?>
 	?>
 </table>
 </div>
-
 	<div class="aside">
 		<aside>
 			<img src="images/wegc.jpg" alt="front of wellington east girls' college" title="wellington east girls' college" width="350" height="350">
