@@ -5,7 +5,7 @@ $dbcon = mysqli_connect("localhost", "elizasquire", "CQYu2NF", "elizasquire_1");
 if(mysqli_connect_errno()){
 	echo "Failed to connect to MySQL:".mysqli_connect_error(); die();} /*This is what connects the website to my database, so my tables can be accessed*/
 else {																   /* so my tables can be accessed */
-	echo "connected to database";
+	echo "";
 }
 ?>
 <?php
@@ -30,22 +30,44 @@ $rs = mysqli_query($dbcon, $all_menu_query)
 or die ('Problem with query' . mysqli_error());
 
 ?>
-	`
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="utf-8">
+<link href="css/styles.css" rel="stylesheet">
 	<title> WEGC Cafe </title>
 </head>
-	<h1>Costs</h1>
-<nav>
-  <a class="active" href="index_assessment.php">Home</a>
-  <a href="menu.php">Back To Main Menu</a>
-	</nav>
 <body>
-<table border="1" summary="Menu">
+
+<div class="grid-container">
+<div class="header">
+<div class="h1">
+<?php
+echo "<h1>Costs "."</h1>";
+
+?>
+</div>
+</div>	
+	
+	<div class = "navbar">
+	 <div class = "ul li a li a:hover">
+	
+			<nav>
+				<ul class="ul">
+					<li class="li"><a class="active" href="index_assessment.php">Home</a></li> <!-- Why is it not horizontal! -->
+					<li class = "li"><a class="active" href="menu.php">Menu</a></li>
+					<li class="li"><a class="active" href="items.php">Items</a></li>
+					<li class = "li"><a class="active" href="weekly_special.php">Weekly Specials</a></li>
+				</ul>
+			</nav>
+			</div>
+	</div>
+<div class="menu">
+<table border="3" summary="Menu">
 <tr>
-<th>Item</th>
-<th>Cost</th>
+<th style="font-size:20px";>Item</th> 
+<th style="font-size:20px">Cost</th>
 </tr>
 	
 <?php
@@ -60,5 +82,7 @@ while ($row = mysqli_fetch_array($rs)){ ?>
 	}
 ?>
 </table>
+</div>
+</div>
 </body>
 </html>
