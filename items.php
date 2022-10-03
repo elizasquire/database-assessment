@@ -15,7 +15,7 @@ else {																   /* so my tables can be accessed */
 <?php
 
 if(isset($_GET['Item'])){
-	$item = $_GET['Item'];
+	$item = $_GET['Item'];  /* sets the item as 1 automatically so a result will always be returned */
 }else{
 	$item = 1;
 }
@@ -27,13 +27,13 @@ if(isset($_GET['Item'])){
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link href="css/styles.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet"> <!-- connecting to the stylesheet -->
 	<title> WEGC Cafe </title>
 
 </head>
 	
 <body>
-<div class="grid-container">
+<div class="grid-container"> <!-- opening the grid container -->
 <div class="header">
 <div class="h1">
 <?php
@@ -42,14 +42,12 @@ echo "<h1>Items"."</h1>";
 ?>
 </div>
 </div>
-	 <div class="navbar">
-	 <div class = "ul li a li a:hover">
-		<div class="option">
+	 <div class="navbar">				
+	 <div class = "ul li a li a:hover"> <!-- all the nav bar divs in one -->
 		<h2>Options</h2>
-		 </div>
 			<nav>
 				<ul class="ul">
-					<li class="li"><a class="active" href="index_assessment.php">Home</a></li> <!-- Why is it not horizontal! -->
+					<li class="li"><a class="active" href="index_assessment.php">Home</a></li> 
 					<li class = "li"><a class="active" href="menu.php">Menu</a></li>
 					<li class="li"><a class="active" href="items.php">Items</a></li>
 					<li class = "li"><a class="active" href="weekly_special.php">Weekly Specials</a></li>
@@ -70,10 +68,10 @@ echo "<h1>Items"."</h1>";
 			
 <?php
 
-$sql = "SELECT * FROM Items"; 
+$sql = "SELECT * FROM Items"; /*the query that displays all the information about the items*/
 
 
-$rs = mysqli_query($dbcon, $sql)
+$rs = mysqli_query($dbcon, $sql) /*connects the query to the database*/
 or die ('Problem with query' . mysqli_error());
 
 ?>
@@ -91,7 +89,7 @@ while ($row = mysqli_fetch_array($rs)) { ?>
 
 <tr>
 
-<td><?php echo $row["Item"]?></td>
+<td><?php echo $row["Item"]?></td>    <!--displays all the data under these fields in the items table -->
 <td><?php echo $row["Cost"]?></td>
 <td><?php echo $row["Nutrition"]?></td>
 <td><?php echo $row["Availability"]?></td>
@@ -100,23 +98,23 @@ while ($row = mysqli_fetch_array($rs)) { ?>
 
 
 <?php   }
-mysqli_close($dbcon); ?>
-	<div class="p1">
+mysqli_close($dbcon); ?> <!-- closes the database for the rest of the page -->
 	 <form name='drinks_form' id='drinks_form' method='get' action='availability.php'>
 
-		<!--drink button-->
+		<!--the button that sorts the items by availability when clicked on-->
 		<input type='submit' name='drinks_button' value='Sort by availability'>
 	</form>
-	</div>
 </table>
 </div>
 	<div class="footer">
 		<footer>
-			<p> &copy; 2022 E Squire. Please note, these images are merely stock images and should not be used as an example of what the items at the WEGC Cafe look like.</p>
-			<p class="attribution">"<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/78779574@N00/8486536177">Best Salmon Sushi</a>" by <a target="_blank" rel="noopener noreferrer" 			href="https://www.flickr.com/photos/78779574@N00">Michael Kappel</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/2.0/?ref=openverse">CC BY-NC 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;"><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" style="height: 1em; margin-right: 0.125em; display: inline;">. </p>
-			<p class="attribution">"<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/45488928@N00/2975510440">Brownies</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/45488928@N00">Cristiano Betta</a> is licensed under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/2.0/?ref=openverse">CC BY 2.0 <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1em; margin-right: 0.125em; display: inline;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1em; margin-right: 0.125em; display: inline;">. </p>
+			<p> &copy; 2022 E Squire. Please note, these images are stock images and should not be used as an example of what the items at the WEGC Cafe look like.</p>
+			<p>"Best Salmon Sushi" by Michael Kappel is licensed under CC BY-NC 2.0. To view a copy of this license, visit: <a href = "https://creativecommons.org/licenses/by-nc/2.0/?ref=openverse">
+				https://creativecommons.org/licenses/by-nc/2.0/?ref=openverse.</a></p> <!-- crediting the sushi image-->
+			<p>"Brownies" by Cristiano Betta is licensed under CC BY 2.0. To view a copy of this license, visit: <a href = "https://creativecommons.org/licenses/by/2.0/?ref=openverse">
+				https://creativecommons.org/licenses/by/2.0/?ref=openverse</a></p> <!-- crediting the brownie image-->
 	</footer>
 </div>
-</div>
+</div> <!-- closing the grid container div-->
 </body>
 </html>
